@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Caseda · Patricio León | Servicio 24h</title>
+    <meta name="description" content="Servicio de taxi profesional con Patricio León. Disponible 24 horas, vehículo de 9 plazas Toyota Proace Verso Electric. Rápido, seguro y práctico.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --yellow: #F5C200;
+            --black: #0a0a0a;
+            --card: #141414;
+            --white: #ffffff;
+            --gray: #888888;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.4rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 194, 0, 0.1);
+        }
+
+        .nav-logo {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--yellow);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-cta {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 0.55rem 1.3rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 9rem 2rem 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(245, 194, 0, 0.08);
+            border: 1px solid rgba(245, 194, 0, 0.25);
+            color: var(--yellow);
+            padding: 0.45rem 1.1rem;
+            border-radius: 2rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            margin-bottom: 2.2rem;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: var(--yellow);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3.2rem, 8vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1.04;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span { color: var(--yellow); }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--gray);
+            max-width: 520px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--black);
+            padding: 1rem 2.4rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(245, 194, 0, 0.3);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--white);
+            padding: 1rem 2.4rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--yellow);
+            color: var(--yellow);
+        }
+
+        /* STATS */
+        .stats {
+            background: var(--card);
+            border-top: 1px solid rgba(245,194,0,0.08);
+            border-bottom: 1px solid rgba(245,194,0,0.08);
+            padding: 2.8rem 2rem;
+        }
+
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--yellow);
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.4rem;
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 7rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            margin-bottom: 3.5rem;
+            line-height: 1.1;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .service-card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 1.2rem;
+            padding: 2rem 1.8rem;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .service-card:hover {
+            border-color: rgba(245,194,0,0.3);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* VEHICLE */
+        .vehicle-section {
+            background: var(--card);
+            border-top: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 7rem 2rem;
+        }
+
+        .vehicle-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .vehicle-content h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .vehicle-content p {
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .vehicle-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.85rem 1.1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 0.7rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .spec-key { color: var(--gray); font-size: 0.88rem; }
+        .spec-val { color: var(--white); font-weight: 600; font-size: 0.88rem; }
+
+        .vehicle-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .car-box {
+            width: 100%;
+            background: linear-gradient(135deg, #181818 0%, #1e1e1e 100%);
+            border-radius: 1.4rem;
+            border: 1px solid rgba(245,194,0,0.12);
+            position: relative;
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .car-box::before {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -20%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(245,194,0,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .car-img {
+            width: 100%;
+            display: block;
+            mix-blend-mode: multiply;
+            border-radius: 0.6rem;
+        }
+
+        .car-badge {
+            position: absolute;
+            bottom: 1.2rem;
+            right: 1.2rem;
+            background: rgba(245,194,0,0.12);
+            border: 1px solid rgba(245,194,0,0.3);
+            color: var(--yellow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        /* CTA / CONTACTO */
+        .cta-section {
+            padding: 9rem 2rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.2rem;
+            line-height: 1.05;
+        }
+
+        .cta-section h2 span { color: var(--yellow); }
+
+        .cta-section p {
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .phone-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--yellow);
+            color: var(--black);
+            padding: 1.2rem 3rem;
+            border-radius: 3rem;
+            font-weight: 800;
+            font-size: 1.35rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 0 50px rgba(245,194,0,0.2);
+        }
+
+        .phone-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 70px rgba(245,194,0,0.4);
+        }
+
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
+            padding-bottom: 2px;
+        }
+
+        .email-btn:hover {
+            color: var(--yellow);
+            border-color: var(--yellow);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.82rem;
+            letter-spacing: 0.03em;
+        }
+
+        footer a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--yellow); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vehicle-inner {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .vehicle-visual { order: -1; }
+
+            .hero h1 { font-size: 3rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 1.2rem 1.2rem; }
+            .hero { padding: 7rem 1.2rem 3rem; }
+            .section { padding: 5rem 1.2rem; }
+            .vehicle-section { padding: 5rem 1.2rem; }
+            .cta-section { padding: 6rem 1.2rem; }
+            .phone-btn { font-size: 1.1rem; padding: 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">Taxi Caseda</div>
+        <a href="tel:+34623104295" class="nav-cta">623 104 295</a>
+    </nav>
+
+    <!-- HERO -->
+    <section>
+        <div class="hero">
+            <div class="hero-tag">
+                <div class="dot"></div>
+                Disponible 24 horas
+            </div>
+            <h1>Tu viaje,<br><span>cuando lo<br>necesites.</span></h1>
+            <p class="hero-sub">
+                Servicio de taxi profesional con Patricio León. Rápido, seguro y práctico.
+                Vehículo de 9 plazas para grupos, familias y traslados especiales.
+            </p>
+            <div class="hero-actions">
+                <a href="tel:+34623104295" class="btn-primary">Llamar ahora</a>
+                <a href="#servicios" class="btn-secondary">Ver servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stats-inner">
+            <div>
+                <div class="stat-number">24h</div>
+                <div class="stat-label">Disponibilidad</div>
+            </div>
+            <div>
+                <div class="stat-number">9</div>
+                <div class="stat-label">Plazas</div>
+            </div>
+            <div>
+                <div class="stat-number">365</div>
+                <div class="stat-label">Días al año</div>
+            </div>
+            <div>
+                <div class="stat-number">0</div>
+                <div class="stat-label">Complicaciones</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="section">
+            <div class="section-label">Servicios</div>
+            <h2 class="section-title">Rápido, seguro<br>y práctico.</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Rápido</h3>
+                    <p>Puntualidad garantizada. Llegamos cuando nos necesitas, sin esperas innecesarias.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Seguro</h3>
+                    <p>Conductor profesional y con experiencia. Tu seguridad y la de tu familia son lo primero.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✅</div>
+                    <h3>Práctico</h3>
+                    <p>Sin complicaciones. Reserva fácil, vehículo espacioso y servicio sin sorpresas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌙</div>
+                    <h3>24 horas</h3>
+                    <p>Disponible a cualquier hora del día o la noche, todos los días del año.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VEHÍCULO -->
+    <section id="vehiculo">
+        <div class="vehicle-section">
+            <div class="vehicle-inner">
+                <div class="vehicle-content">
+                    <div class="section-label">El vehículo</div>
+                    <h2>Amplio,<br>cómodo y negro.</h2>
+                    <p>Un vehículo pensado para grupos, familias y ocasiones especiales.
+                    Espacio de sobra para todos y para el equipaje.</p>
+                    <div class="vehicle-specs">
+                        <div class="spec-row">
+                            <span class="spec-key">Modelo</span>
+                            <span class="spec-val">Toyota Proace Verso Electric</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Plazas</span>
+                            <span class="spec-val">9 personas</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Año</span>
+                            <span class="spec-val">2025</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Color</span>
+                            <span class="spec-val">Negro</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-key">Disponibilidad</span>
+                            <span class="spec-val">24h · 365 días</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vehicle-visual">
+                    <div class="car-box">
+                        <img src="car.png" alt="Toyota Proace Verso Electric Negro 2025" class="car-img">
+                        <div class="car-badge">9 plazas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="cta-section">
+            <h2>¿Necesitas<br>un <span>taxi ahora</span>?</h2>
+            <p>Llama directamente a Patricio y reserva tu viaje en segundos.</p>
+            <div class="contact-btns">
+                <a href="tel:+34623104295" class="phone-btn">
+                    📞 &nbsp;623 104 295
+                </a>
+                <a href="mailto:taxicaseda@gmail.com" class="email-btn">
+                    ✉ taxicaseda@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Taxi Caseda · Patricio León &nbsp;·&nbsp; <a href="mailto:taxicaseda@gmail.com">taxicaseda@gmail.com</a></p>
+    </footer>
+
+</body>
+</html>
