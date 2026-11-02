@@ -3,432 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Caseda · Patricio León | Servicio 24h</title>
-    <meta name="description" content="Servicio de taxi profesional con Patricio León. Disponible 24 horas, vehículo de 9 plazas Toyota Proace Verso. Rápido, seguro y práctico.">
+    <title>Taxi Cáseda · Patricio León | Taxi 24h en Cáseda y comarca</title>
+    <meta name="description" content="Taxi en Cáseda y la comarca de Sangüesa con Patricio León. Viajes al hospital, al aeropuerto, bodas y eventos. Vehículo de 9 plazas, 24 horas, 365 días.">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg:     #07070f;
-            --gold:   #F5C200;
-            --amber:  #FF8C00;
-            --violet: #7C3AED;
-            --blue:   #3B82F6;
-            --white:  #ffffff;
-            --muted:  #94a3b8;
-            --border: rgba(255,255,255,0.08);
-            --grad:   linear-gradient(135deg, #F5C200 0%, #FF8C00 100%);
+            --paper:   #F6F1E7;
+            --paper-2: #EDE5D4;
+            --card:    #FFFDF8;
+            --ink:     #1B1813;
+            --ink-2:   #5B5347;
+            --yellow:  #FFC72C;
+            --line:    #D9CFBC;
+            --display: 'Bricolage Grotesque', sans-serif;
+            --checker: repeating-conic-gradient(var(--ink) 0 25%, var(--yellow) 0 50%) 0 0 / 18px 18px;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            background: var(--bg);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Figtree', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* ORBS */
-        .orb {
-            position: fixed; border-radius: 50%;
-            pointer-events: none; z-index: 0; filter: blur(110px);
-        }
-        .orb-1 { width: 700px; height: 700px; background: rgba(124,58,237,0.11); top: -250px; right: -200px; }
-        .orb-2 { width: 550px; height: 550px; background: rgba(245,194,0,0.06);  bottom: 10%; left: -180px; }
-        .orb-3 { width: 400px; height: 400px; background: rgba(59,130,246,0.07); bottom: -50px; right: 15%; }
+        .wrap { max-width: 1120px; margin: 0 auto; padding-left: 2.5rem; padding-right: 2.5rem; }
 
-        nav, main, footer { position: relative; z-index: 1; }
+        h1, h2, h3 { font-family: var(--display); letter-spacing: -0.02em; line-height: 1.05; }
+
+        /* franja de cuadros de taxi */
+        .checker { height: 18px; background: var(--checker); }
 
         /* NAV */
-        nav {
-            position: fixed; top: 0; width: 100%;
-            padding: 1.2rem 2.5rem;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 200;
-            background: rgba(7,7,15,0.7);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: var(--paper);
+            border-bottom: 2px solid var(--ink);
         }
-
+        .nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-top: 0.9rem; padding-bottom: 0.9rem;
+        }
         .logo {
-            display: flex; align-items: center; gap: 0.55rem;
-            text-decoration: none;
+            display: flex; align-items: center; gap: 0.6rem;
+            color: var(--ink); text-decoration: none;
+            font-family: var(--display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em;
         }
-        .logo-dot {
-            width: 9px; height: 9px; border-radius: 50%;
-            background: var(--grad);
-            animation: ping 2.5s ease-in-out infinite;
+        .logo-tag {
+            background: var(--yellow); color: var(--ink);
+            border: 2px solid var(--ink); border-radius: 0.3rem;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.12em;
+            padding: 0.15rem 0.45rem;
         }
-        @keyframes ping {
-            0%,100% { box-shadow: 0 0 0 0 rgba(245,194,0,0.5); }
-            60%      { box-shadow: 0 0 0 8px rgba(245,194,0,0); }
-        }
-        .logo-name {
-            font-size: 1rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
-            background: var(--grad);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
+        .nav-links { display: flex; align-items: center; gap: 1.8rem; }
+        .nav-links a:not(.btn) { color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:not(.btn):hover { color: var(--ink); }
 
-        .nav-tel {
-            background: var(--grad); color: #000;
-            font-weight: 700; font-size: 0.9rem;
-            padding: 0.55rem 1.4rem; border-radius: 3rem;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(245,194,0,0.25);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .nav-tel:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(245,194,0,0.4); }
-
-        /* ── HERO: full viewport, centrado ── */
-        .hero {
-            min-height: 100vh;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center;
-            padding: 10rem 2rem 6rem;
-        }
-
-        .live-badge {
+        /* BOTONES */
+        .btn {
             display: inline-flex; align-items: center; gap: 0.55rem;
-            background: rgba(245,194,0,0.07);
-            border: 1px solid rgba(245,194,0,0.2);
-            color: var(--gold);
-            padding: 0.4rem 1.1rem; border-radius: 2rem;
-            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-            margin-bottom: 2.5rem;
+            background: var(--yellow); color: var(--ink);
+            border: 2px solid var(--ink); border-radius: 0.6rem;
+            padding: 0.6rem 1.2rem;
+            font-weight: 700; font-size: 0.95rem; text-decoration: none;
+            box-shadow: 3px 3px 0 var(--ink);
+            transition: transform 0.15s, box-shadow 0.15s;
         }
-        .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: blink 2s ease-in-out infinite; }
-        @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.2; } }
+        .btn:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+        .btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--ink); }
+        .btn-lg { font-size: 1.15rem; padding: 0.95rem 1.8rem; }
+        .btn-plain { background: var(--card); }
+        .btn svg { width: 1.1em; height: 1.1em; }
 
-        .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            font-weight: 900; letter-spacing: -0.04em; line-height: 1.02;
-            margin-bottom: 1.8rem;
-            max-width: 900px;
+        /* ── HERO ── */
+        .hero {
+            display: grid; grid-template-columns: 1.15fr 1fr;
+            gap: 4rem; align-items: center;
+            padding-top: 5rem; padding-bottom: 5.5rem;
         }
-
-        .gt {
-            background: var(--grad);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        .kicker {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-weight: 600; font-size: 0.9rem; color: var(--ink-2);
+            margin-bottom: 1.4rem;
         }
+        .kicker-dot { width: 9px; height: 9px; border-radius: 50%; background: #2F9E44; box-shadow: 0 0 0 3px rgba(47,158,68,0.18); }
 
-        .hero p {
-            color: var(--muted); font-size: 1.15rem; font-weight: 300;
-            line-height: 1.7; max-width: 520px; margin-bottom: 3rem;
+        .hero h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); font-weight: 800; margin-bottom: 1.5rem; }
+        .mark {
+            background: linear-gradient(transparent 58%, var(--yellow) 58%, var(--yellow) 92%, transparent 92%);
+            padding: 0 0.1em;
         }
+        .hero p { font-size: 1.2rem; color: var(--ink-2); max-width: 32rem; margin-bottom: 2.2rem; }
+        .hero p strong { color: var(--ink); }
+        .hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; }
 
-        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-        .btn-g {
-            background: var(--grad); color: #000;
-            padding: 1rem 2.4rem; border-radius: 3rem;
-            font-weight: 700; font-size: 1rem; text-decoration: none;
-            box-shadow: 0 6px 28px rgba(245,194,0,0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
+        /* postal con el coche */
+        .postcard {
+            background: var(--card);
+            border: 2px solid var(--ink); border-radius: 1rem;
+            box-shadow: 8px 8px 0 var(--ink);
+            transform: rotate(1.5deg);
+            overflow: hidden;
         }
-        .btn-g:hover { transform: translateY(-2px); box-shadow: 0 10px 38px rgba(245,194,0,0.45); }
-
-        .btn-o {
-            border: 1px solid var(--border); color: var(--white);
-            padding: 1rem 2.4rem; border-radius: 3rem;
-            font-weight: 500; font-size: 1rem; text-decoration: none;
-            backdrop-filter: blur(8px);
-            transition: border-color 0.2s, color 0.2s;
+        .postcard img { width: 100%; display: block; background: #fff; padding: 1.5rem 1.5rem 0.5rem; }
+        .postcard-foot {
+            display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+            padding: 0.9rem 1.2rem;
+            border-top: 2px dashed var(--line);
+            font-size: 0.88rem; color: var(--ink-2);
         }
-        .btn-o:hover { border-color: rgba(245,194,0,0.35); color: var(--gold); }
-
-        /* ── STATS ── */
-        .stats-bar {
-            background: rgba(255,255,255,0.02);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 2.8rem 2.5rem;
-        }
-        .stats-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(4,1fr);
-            gap: 1.5rem; text-align: center;
-        }
-        .s-num {
-            font-size: 3rem; font-weight: 900; line-height: 1; letter-spacing: -0.04em;
-            background: var(--grad);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .s-lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.45rem; }
-
-        /* ── SERVICIOS ── */
-        #servicios { padding: 8rem 2.5rem; max-width: 1100px; margin: 0 auto; }
-
-        .eyebrow { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.7rem; }
-        .sh { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 3rem; }
-
-        .svcs {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
-            gap: 1px; background: var(--border);
-            border: 1px solid var(--border); border-radius: 1.5rem; overflow: hidden;
+        .postcard-foot strong { color: var(--ink); font-family: var(--display); font-size: 1rem; }
+        .plate {
+            border: 2px solid var(--ink); border-radius: 0.3rem;
+            background: var(--yellow); color: var(--ink);
+            font-weight: 800; font-size: 0.75rem; letter-spacing: 0.1em;
+            padding: 0.2rem 0.5rem; white-space: nowrap;
         }
 
+        /* ── DATOS ── */
+        .facts { background: var(--ink); color: var(--paper); }
+        .facts-inner {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            padding-top: 2rem; padding-bottom: 2rem;
+        }
+        .fact { padding: 0 1.5rem; border-left: 1px solid rgba(246,241,231,0.18); }
+        .fact:first-child { border-left: none; padding-left: 0; }
+        .fact-num { font-family: var(--display); font-weight: 800; font-size: 2.4rem; line-height: 1; color: var(--yellow); }
+        .fact-lbl { font-size: 0.9rem; color: rgba(246,241,231,0.75); margin-top: 0.35rem; }
+
+        /* ── SECCIONES ── */
+        section { padding: 6.5rem 0; }
+        .eyebrow {
+            display: inline-block;
+            font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--ink-2); margin-bottom: 0.8rem;
+        }
+        .sh { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; max-width: 40rem; }
+        .lead { color: var(--ink-2); font-size: 1.1rem; max-width: 38rem; margin-bottom: 3rem; }
+
+        /* SERVICIOS */
+        .svcs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
         .svc {
-            background: #0b0b16; padding: 2.2rem 2rem;
-            position: relative; transition: background 0.25s;
+            background: var(--card);
+            border: 2px solid var(--ink); border-radius: 1rem;
+            padding: 2rem;
+            display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: start;
         }
-        .svc:hover { background: #0f0f1e; }
-
-        .svc-bar {
-            position: absolute; top: 0; left: 2rem; right: 2rem; height: 2px; border-radius: 0 0 2px 2px;
+        .svc-ic {
+            width: 3.2rem; height: 3.2rem; border-radius: 0.7rem;
+            background: var(--yellow); border: 2px solid var(--ink);
+            display: grid; place-items: center;
         }
-        .b-gold   { background: linear-gradient(90deg, var(--gold), var(--amber)); }
-        .b-blue   { background: linear-gradient(90deg, var(--blue), #06b6d4); }
-        .b-green  { background: linear-gradient(90deg, #10b981, #34d399); }
-        .b-violet { background: linear-gradient(90deg, var(--violet), #a855f7); }
+        .svc-ic svg { width: 1.5rem; height: 1.5rem; }
+        .svc h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.45rem; }
+        .svc p { color: var(--ink-2); }
 
-        .svc-ic { font-size: 1.6rem; margin: 0.8rem 0 1.2rem; }
-        .svc h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.45rem; }
-        .svc p  { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
-
-        /* ── VEHÍCULO: solo un apartado ── */
-        #vehiculo {
-            background: rgba(255,255,255,0.015);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 8rem 2.5rem;
+        /* ZONA */
+        #zona { background: var(--paper-2); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+        .zona-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+        .zona-inner .lead { margin-bottom: 1.5rem; }
+        .towns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .town {
+            background: var(--card); border: 2px solid var(--ink); border-radius: 2rem;
+            padding: 0.4rem 1rem; font-weight: 600; font-size: 0.95rem;
         }
+        .town.home { background: var(--yellow); }
+        .towns-note { color: var(--ink-2); font-size: 0.95rem; margin-top: 1.4rem; }
 
-        .veh-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 5rem; align-items: center;
-        }
-
-        .veh-content h2 {
-            font-size: clamp(2rem, 3.5vw, 3rem);
-            font-weight: 900; letter-spacing: -0.025em; line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-        .veh-content > p { color: var(--muted); line-height: 1.75; margin-bottom: 2.5rem; }
-
-        .specs { display: flex; flex-direction: column; gap: 0.5rem; }
+        /* VEHÍCULO */
+        .veh-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .specs { border-top: 2px solid var(--ink); }
         .spec {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.85rem 1.1rem;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid var(--border); border-radius: 0.8rem;
-            transition: background 0.2s;
+            display: flex; justify-content: space-between; gap: 1rem;
+            padding: 0.95rem 0; border-bottom: 1px solid var(--line);
         }
-        .spec:hover { background: rgba(255,255,255,0.04); }
-        .sk { color: var(--muted); font-size: 0.87rem; }
-        .sv { font-weight: 600; font-size: 0.87rem; }
+        .sk { color: var(--ink-2); }
+        .sv { font-weight: 700; text-align: right; }
 
-        /* imagen del coche: fondo degradado claro→oscuro para eliminar el blanco del PNG */
-        .veh-car {
-            border-radius: 1.8rem; overflow: hidden;
-            border: 1px solid var(--border);
-            background: #0f0f1a;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+        /* CONTACTO */
+        #contacto { padding: 0; }
+        .cta { background: var(--yellow); border-top: 2px solid var(--ink); }
+        .cta-inner { padding-top: 5.5rem; padding-bottom: 5.5rem; text-align: center; }
+        .cta h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; margin-bottom: 0.8rem; }
+        .cta p { font-size: 1.15rem; margin-bottom: 2.2rem; }
+        .cta-phone {
+            display: inline-block;
+            font-family: var(--display); font-weight: 800;
+            font-size: clamp(2.6rem, 8vw, 5.5rem); line-height: 1;
+            color: var(--ink); text-decoration: none;
+            border-bottom: 6px solid var(--ink);
+            margin-bottom: 2rem;
         }
-        .car-img-area {
-            background: linear-gradient(180deg, #c5c2bb 0%, #1c1a28 58%, #0f0f1a 100%);
-            padding: 2.5rem 1.5rem 0;
-        }
-        .car-img-area img { width: 100%; display: block; }
-
-        .car-chips {
-            display: flex; gap: 0.5rem; flex-wrap: wrap;
-            padding: 1rem 1.2rem;
-            border-top: 1px solid var(--border);
-        }
-        .chip {
-            font-size: 0.72rem; font-weight: 700;
-            padding: 0.28rem 0.75rem; border-radius: 0.5rem; letter-spacing: 0.04em;
-        }
-        .cy { background: rgba(245,194,0,0.12); color: var(--gold); border: 1px solid rgba(245,194,0,0.22); }
-        .cw { background: rgba(255,255,255,0.05); color: var(--white); border: 1px solid var(--border); }
-
-        /* ── CONTACTO ── */
-        #contacto { padding: 8rem 2.5rem; }
-        .cta-card {
-            max-width: 820px; margin: 0 auto;
-            background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(59,130,246,0.06) 50%, rgba(245,194,0,0.07) 100%);
-            border: 1px solid rgba(124,58,237,0.18);
-            border-radius: 2.5rem; padding: 5rem 3rem;
-            text-align: center; position: relative; overflow: hidden;
-        }
-        .cta-card::before {
-            content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 50% 110%, rgba(245,194,0,0.07) 0%, transparent 55%);
-            pointer-events: none;
-        }
-        .cta-card h2 {
-            font-size: clamp(2.4rem, 5vw, 4rem);
-            font-weight: 900; letter-spacing: -0.03em; line-height: 1.08;
-            margin-bottom: 1rem; position: relative;
-        }
-        .cta-card > p { color: var(--muted); font-size: 1.05rem; margin-bottom: 3rem; position: relative; }
-
-        .cta-btns { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; position: relative; }
-
-        .call-btn {
-            display: inline-flex; align-items: center; gap: 0.8rem;
-            background: var(--grad); color: #000;
-            padding: 1.2rem 3.2rem; border-radius: 3rem;
-            font-weight: 800; font-size: 1.4rem; text-decoration: none;
-            box-shadow: 0 0 60px rgba(245,194,0,0.22);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .call-btn:hover { transform: translateY(-3px); box-shadow: 0 0 80px rgba(245,194,0,0.42); }
-
-        .mail-lnk {
-            color: var(--muted); font-size: 0.95rem; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            transition: color 0.2s;
-        }
-        .mail-lnk:hover { color: var(--gold); }
+        .cta-phone:hover { color: #000; }
+        .cta-mail { display: block; color: var(--ink); font-weight: 600; }
 
         /* FOOTER */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2rem 2.5rem;
+        footer { background: var(--ink); color: rgba(246,241,231,0.7); font-size: 0.9rem; }
+        .foot {
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;
-            color: var(--muted); font-size: 0.82rem;
+            padding-top: 2rem; padding-bottom: 1.2rem;
         }
-        .f-brand {
-            background: var(--grad);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;
-        }
-        footer a { color: var(--muted); text-decoration: none; }
-        footer a:hover { color: var(--gold); }
+        .foot strong { color: var(--paper); font-family: var(--display); }
+        footer a { color: rgba(246,241,231,0.7); text-decoration: none; }
+        footer a:hover { color: var(--yellow); }
         .f-legal {
-            width: 100%; padding-top: 0.8rem; border-top: 1px solid var(--border);
-            display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem 1.6rem;
+            display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem;
+            padding-top: 1.2rem; padding-bottom: 2rem;
+            border-top: 1px solid rgba(246,241,231,0.15);
+            font-size: 0.85rem;
         }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .veh-inner { grid-template-columns: 1fr; gap: 3rem; }
-            .veh-visual { order: -1; }
+            .hero, .zona-inner, .veh-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .postcard { max-width: 480px; }
+            .svcs { grid-template-columns: 1fr; }
+            .facts-inner { grid-template-columns: repeat(2, 1fr); row-gap: 1.6rem; }
+            .fact:nth-child(3) { border-left: none; padding-left: 0; }
         }
         @media (max-width: 640px) {
-            .stats-inner { grid-template-columns: repeat(2,1fr); }
-            nav { padding: 1rem 1.2rem; }
-            .hero h1 { font-size: 3rem; }
-            #servicios, #vehiculo, #contacto { padding: 5rem 1.2rem; }
-            .cta-card { padding: 3rem 1.4rem; border-radius: 1.5rem; }
-            .call-btn { font-size: 1.15rem; padding: 1rem 2rem; }
-            footer { flex-direction: column; text-align: center; }
+            .wrap { padding-left: 1rem; padding-right: 1rem; }
+            .nav-links a:not(.btn) { display: none; }
+            .logo { font-size: 1.1rem; }
+            .hero { padding-top: 3rem; padding-bottom: 4rem; }
+            .hero p { font-size: 1.08rem; }
+            .postcard { box-shadow: 5px 5px 0 var(--ink); }
+            section { padding: 4.5rem 0; }
+            .svc { padding: 1.4rem; grid-template-columns: 1fr; }
+            .fact { padding: 0 1rem; }
+            .fact-num { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-
-    <nav>
-        <a href="#" class="logo">
-            <div class="logo-dot"></div>
-            <span class="logo-name">Taxi Caseda</span>
-        </a>
-        <a href="tel:+34623104295" class="nav-tel">623 104 295</a>
-    </nav>
+    <header>
+        <div class="checker"></div>
+        <div class="wrap nav">
+            <a href="#" class="logo"><span class="logo-tag">TAXI</span> Cáseda</a>
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#zona">Zona</a>
+                <a href="#vehiculo">Vehículo</a>
+                <a href="tel:+34623104295" class="btn">623 104 295</a>
+            </div>
+        </div>
+    </header>
 
     <main>
 
-        <!-- HERO: landing grande, solo texto -->
-        <section class="hero">
-            <div class="live-badge"><div class="live-dot"></div> Disponible 24 horas</div>
-            <h1>Tu viaje,<br><span class="gt">cuando lo necesites.</span></h1>
-            <p>Servicio de taxi profesional con Patricio León. Rápido, seguro y práctico para grupos, familias y traslados especiales.</p>
-            <div class="hero-btns">
-                <a href="tel:+34623104295" class="btn-g">Llamar ahora</a>
-                <a href="#servicios" class="btn-o">Ver servicios</a>
+        <!-- HERO -->
+        <div class="wrap hero">
+            <div>
+                <div class="kicker"><span class="kicker-dot"></span> Disponible 24 horas, todos los días</div>
+                <h1>Tu taxi en Cáseda y <span class="mark">toda la comarca.</span></h1>
+                <p>Soy <strong>Patricio León</strong>. Te llevo al médico, al aeropuerto, a una boda o a casa después de la fiesta. Llamas y voy.</p>
+                <div class="hero-btns">
+                    <a href="tel:+34623104295" class="btn btn-lg">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+                        Llamar a Patricio
+                    </a>
+                    <a href="#servicios" class="btn btn-lg btn-plain">Qué viajes hago</a>
+                </div>
             </div>
-        </section>
+            <div class="postcard">
+                <img src="car.png" alt="Toyota Proace Verso negro de 2025, el taxi de Patricio">
+                <div class="postcard-foot">
+                    <div><strong>Toyota Proace Verso</strong><br>Negro · 2025</div>
+                    <span class="plate">9 PLAZAS</span>
+                </div>
+            </div>
+        </div>
 
-        <!-- STATS -->
-        <div class="stats-bar">
-            <div class="stats-inner">
-                <div><div class="s-num">24h</div><div class="s-lbl">Disponibilidad</div></div>
-                <div><div class="s-num">9</div><div class="s-lbl">Plazas</div></div>
-                <div><div class="s-num">365</div><div class="s-lbl">Días al año</div></div>
-                <div><div class="s-num">0</div><div class="s-lbl">Complicaciones</div></div>
+        <!-- DATOS -->
+        <div class="facts">
+            <div class="wrap facts-inner">
+                <div class="fact"><div class="fact-num">24 h</div><div class="fact-lbl">De día y de noche</div></div>
+                <div class="fact"><div class="fact-num">365</div><div class="fact-lbl">Días al año</div></div>
+                <div class="fact"><div class="fact-num">9</div><div class="fact-lbl">Plazas en el vehículo</div></div>
+                <div class="fact"><div class="fact-num">1</div><div class="fact-lbl">Llamada para reservar</div></div>
             </div>
         </div>
 
         <!-- SERVICIOS -->
         <section id="servicios">
-            <div class="eyebrow">Servicios</div>
-            <h2 class="sh">Rápido, seguro<br>y práctico.</h2>
-            <div class="svcs">
-                <div class="svc">
-                    <div class="svc-bar b-gold"></div>
-                    <div class="svc-ic">⚡</div>
-                    <h3>Rápido</h3>
-                    <p>Puntualidad garantizada. Llegamos cuando nos necesitas, sin esperas.</p>
-                </div>
-                <div class="svc">
-                    <div class="svc-bar b-blue"></div>
-                    <div class="svc-ic">🛡️</div>
-                    <h3>Seguro</h3>
-                    <p>Conductor profesional con experiencia. Tu seguridad es lo primero.</p>
-                </div>
-                <div class="svc">
-                    <div class="svc-bar b-green"></div>
-                    <div class="svc-ic">✅</div>
-                    <h3>Práctico</h3>
-                    <p>Sin complicaciones. Reserva fácil y servicio sin sorpresas.</p>
-                </div>
-                <div class="svc">
-                    <div class="svc-bar b-violet"></div>
-                    <div class="svc-ic">🌙</div>
-                    <h3>24 horas</h3>
-                    <p>Disponible cualquier hora del día o la noche, todos los días del año.</p>
+            <div class="wrap">
+                <span class="eyebrow">Servicios</span>
+                <h2 class="sh">Para lo de cada día y para los días señalados.</h2>
+                <p class="lead">Viajes dentro de la comarca y a cualquier punto de Navarra o fuera de ella. Pregunta el precio antes de salir, sin compromiso.</p>
+                <div class="svcs">
+                    <div class="svc">
+                        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+                        <div>
+                            <h3>Médico y hospital</h3>
+                            <p>Consultas, pruebas y revisiones en Pamplona, Tudela o el centro de salud. Te dejo en la puerta y te espero o te recojo a la salida.</p>
+                        </div>
+                    </div>
+                    <div class="svc">
+                        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+                        <div>
+                            <h3>Aeropuerto y estación</h3>
+                            <p>Al aeropuerto de Pamplona-Noáin, a otros aeropuertos y a las estaciones de tren y autobús. Con sitio para todo el equipaje, a cualquier hora del vuelo.</p>
+                        </div>
+                    </div>
+                    <div class="svc">
+                        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+                        <div>
+                            <h3>Bodas, fiestas y eventos</h3>
+                            <p>Traslados de invitados, cenas de grupo y vuelta a casa después de la fiesta. Un solo vehículo para todo el grupo, sin preocuparse por conducir.</p>
+                        </div>
+                    </div>
+                    <div class="svc">
+                        <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div>
+                            <h3>Por la comarca</h3>
+                            <p>Recados, compras, visitas a la familia o ir y volver del trabajo. Para quien no conduce o no quiere coger el coche.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- VEHÍCULO: un solo apartado -->
-        <section id="vehiculo">
-            <div class="veh-inner">
-                <div class="veh-content">
-                    <div class="eyebrow">El vehículo</div>
-                    <h2>Amplio, cómodo<br>y <span class="gt">elegante.</span></h2>
-                    <p>Un vehículo de 9 plazas pensado para grupos, familias y ocasiones especiales. Espacio de sobra para todos y para el equipaje.</p>
-                    <div class="specs">
-                        <div class="spec"><span class="sk">Modelo</span><span class="sv">Toyota Proace Verso</span></div>
-                        <div class="spec"><span class="sk">Plazas</span><span class="sv">9 personas</span></div>
-                        <div class="spec"><span class="sk">Año</span><span class="sv">2025</span></div>
-                        <div class="spec"><span class="sk">Color</span><span class="sv">Negro</span></div>
-                        <div class="spec"><span class="sk">Disponibilidad</span><span class="sv">24h · 365 días</span></div>
-                    </div>
+        <!-- ZONA -->
+        <section id="zona">
+            <div class="wrap zona-inner">
+                <div>
+                    <span class="eyebrow">Zona de servicio</span>
+                    <h2 class="sh">Salgo de Cáseda y llego a donde haga falta.</h2>
+                    <p class="lead">Cubro a diario los pueblos de alrededor. Para viajes más largos, llama y lo organizamos.</p>
+                    <a href="tel:+34623104295" class="btn">¿Tu pueblo no está? Llama</a>
                 </div>
-                <div class="veh-visual">
-                    <div class="veh-car">
-                        <div class="car-img-area">
-                            <img src="car.png" alt="Toyota Proace Verso Negro 2025">
-                        </div>
-                        <div class="car-chips">
-                            <span class="chip cy">Toyota Proace Verso</span>
-                            <span class="chip cw">2025 · Negro</span>
-                        </div>
+                <div>
+                    <div class="towns">
+                        <span class="town home">Cáseda</span>
+                        <span class="town">Sangüesa</span>
+                        <span class="town">Gallipienzo</span>
+                        <span class="town">Carcastillo</span>
+                        <span class="town">Murillo el Fruto</span>
+                        <span class="town">Santacara</span>
+                        <span class="town">Mélida</span>
+                        <span class="town">Aibar</span>
+                        <span class="town">Eslava</span>
+                        <span class="town">Ujué</span>
+                        <span class="town">Lumbier</span>
+                        <span class="town">Javier</span>
+                        <span class="town">Yesa</span>
+                        <span class="town">Sada</span>
+                        <span class="town">Tafalla</span>
+                        <span class="town">Pamplona</span>
                     </div>
+                    <p class="towns-note">Y viajes a Tudela, Zaragoza, Logroño, Bilbao o donde necesites, bajo reserva.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VEHÍCULO -->
+        <section id="vehiculo">
+            <div class="wrap veh-inner">
+                <div>
+                    <span class="eyebrow">El vehículo</span>
+                    <h2 class="sh">Sitio para el grupo y para las maletas.</h2>
+                    <p class="lead">Una furgoneta de 9 plazas, nueva y cómoda, pensada para familias, grupos y viajes largos.</p>
+                </div>
+                <div class="specs">
+                    <div class="spec"><span class="sk">Modelo</span><span class="sv">Toyota Proace Verso</span></div>
+                    <div class="spec"><span class="sk">Plazas</span><span class="sv">9</span></div>
+                    <div class="spec"><span class="sk">Año</span><span class="sv">2025</span></div>
+                    <div class="spec"><span class="sk">Color</span><span class="sv">Negro</span></div>
+                    <div class="spec"><span class="sk">Horario</span><span class="sv">24 h · 365 días</span></div>
                 </div>
             </div>
         </section>
 
         <!-- CONTACTO -->
         <section id="contacto">
-            <div class="cta-card">
-                <h2>¿Necesitas<br>un <span class="gt">taxi ahora</span>?</h2>
-                <p>Llama directamente a Patricio y reserva en segundos.</p>
-                <div class="cta-btns">
-                    <a href="tel:+34623104295" class="call-btn">📞 &nbsp;623 104 295</a>
-                    <a href="mailto:taxicaseda@gmail.com" class="mail-lnk">✉ taxicaseda@gmail.com</a>
+            <div class="cta">
+                <div class="checker"></div>
+                <div class="wrap cta-inner">
+                    <h2>¿Necesitas un taxi?</h2>
+                    <p>Llama a Patricio. Si es para otro día, también puedes escribir.</p>
+                    <a href="tel:+34623104295" class="cta-phone">623 104 295</a>
+                    <a href="mailto:taxicaseda@gmail.com" class="cta-mail">taxicaseda@gmail.com</a>
                 </div>
             </div>
         </section>
@@ -436,10 +400,12 @@
     </main>
 
     <footer>
-        <span><span class="f-brand">Taxi Caseda</span> · Patricio León</span>
-        <span>Servicio 24h · 365 días al año</span>
-        <a href="mailto:taxicaseda@gmail.com">taxicaseda@gmail.com</a>
-        <div class="f-legal">
+        <div class="wrap foot">
+            <span><strong>Taxi Cáseda</strong> · Patricio León</span>
+            <span>Cáseda (Navarra) · 24 h · 365 días</span>
+            <a href="mailto:taxicaseda@gmail.com">taxicaseda@gmail.com</a>
+        </div>
+        <div class="wrap f-legal">
             <a href="aviso-legal.html">Aviso legal y términos y condiciones</a>
             <a href="politica-privacidad.html">Política de privacidad</a>
             <a href="politica-cookies.html">Política de cookies</a>
